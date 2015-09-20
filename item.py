@@ -51,6 +51,16 @@ class KeyItem(Item):
 	def unlock_effect(self):
 		print "This method is not yet coded. Subclass it and implement unlock_effect()."
 		
+	def use(self):
+		"""Use the item."""
+		if (self.effect == "???"):
+			print self.effect
+			print "......"
+			self.unlock_effect()
+			print self.effect
+		else:
+			print self.effect
+		
 class BraidedRope(KeyItem):
 	"""Braided Rope"""
 	def __init__(self):
@@ -60,7 +70,118 @@ class BraidedRope(KeyItem):
 		"""Unlock the first time a Hero uses this Key Item."""
 		self.effect = "The braided rope is...finish implementing this"
 		
+	def use(self):
+		"""Use the item."""
+		super(BraidedRope, self).use()
+		print "Braided Rope: Finish implementing this..."
+		
+class CowlTheScaredCrow(KeyItem):
+	"""Cowl, the Scared Crow"""
+	def __init__(self):
+		super(CowlTheScaredCrow, self).__init__("Cowl, the Scared Crow", 
+			"A creature sheltered by the scarecrow.")
+		
+	def unlock_effect(self):
+		"""Unlock the first time a Hero uses this Key Item."""
+		self.effect = """Cowl, the Scared Crow breaks the wind around your shoulder, 
+climbing upwards.  He steadies himself, and examines 
+the lay of the land..."""
+							
+	def use(self):
+		"""Use the item."""
+		super(CowlTheScaredCrow, self).use()
+		self.map()
+		
+	def map(self):
+		"""Opens the world map."""
+		print """ \n\n
+		|---------------Valley of Ithmas----------------|
+		|-----------------------------------------------|
+		|                                               |
+		|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |
+                |-----------------------------------------------|
+              F |     |     |     |     |     |  !  |     |     |
+                |-----------------------------------------------|
+              E |     |     |     |     |     |     |     |     |
+                |-----------------------------------------------|	
+              D |     |     |     |     |     |     |     |     |
+                |-----------------------------------------------|
+              C |     |     |     |     |     |     |     |     |
+                |-----------------------------------------------|
+              B |     |     |     |     |     |     |     |     |
+                |-----------------------------------------------|
+              A |     |     |     |  *  |     |     |     |     |
+                |-----------------------------------------------|
+		|-----------------------------------------------| 
+		     * YOU ARE HERE                ! GOAL\n\n"""
+		     
+class BundleOfDynamite(KeyItem):
+	"""Bundle of Dynamite"""
+	def __init__(self):
+		super(BundleOfDynamite, self).__init__("Bundle of Dynamite", 
+			"A bundle of dynamite, recovered from the rail cart.")
+		
+	def unlock_effect(self):
+		"""Unlock the first time a Hero uses this Key Item."""
+		self.effect = """The bundle of dynamite hisses as the fuse curls
+upon itself in an ember lit haze of smoke."""
+							
+	def use(self):
+		"""Use the item."""
+		super(BundleOfDynamite, self).use()
+		print "Bundle of Dynamite: Finish implementing this..."
+		
+class MalachiteCrystal(KeyItem):
+	"""Malachite Crystal"""
+	def __init__(self):
+		super(MalachiteCrystal, self).__init__("Malachite Crystal", 
+			"A crystal of Malachite, found at the bottom of the well.")
+		
+	def unlock_effect(self):
+		"""Unlock the first time a Hero uses this Key Item."""
+		self.effect = """The malachite shines in the sunlight."""
+							
+	def use(self):
+		"""Use the item."""
+		super(MalachiteCrystal, self).use()
+		self.compass()
+		
+	def compass(self):
+		print "--------This points somewhere--------"
+		
+class SpikeMaul(KeyItem):
+	"""Spike Maul"""
+	def __init__(self):
+		super(SpikeMaul, self).__init__("Spike Maul", 
+			"An old spike maul, obtained from the old mine.")
+		
+	def unlock_effect(self):
+		"""Unlock the first time a Hero uses this Key Item."""
+		self.effect = """You turn the spike maul over in your hands..."""
 
+#	Finish after making Weapon class.  Need it for testing.
+#							
+#	def use(self, Character):
+#		"""Use the item."""
+#		super(SpikeMaul, self).use()
+#		if isInstance(WoodCuttingAxe) and isInstance(Hook) in Character.weapons
+#			answer = raw_input("Would you like to combine your Wood-cutting Axe and Hook?")
+#			if answer = "yes"
+#				print "Alright!"
+#				self.craft(Character.weapons.WoodCuttingAxe, 
+#						Character.weapons.WoodCuttingAxe)
+#			else:
+#				print "Well, that's too bad."
+		
+#	def craft(self, woodCuttingAxe, hook):
+#		"""Craft the Worn War Axe
+#		Worn War Axe = Wood-cutting Axe + Hook """
+#		if isinstance(woodCuttingAxe, WoodCuttingAxe) and 
+#			isinstance(hook, Hook):
+#			woodCuttingAxe.delete(1)
+#			hook.delete(1)
+#			wornWarAxe = WornWarAxe()
+#			Character.weapons.add(wornWarAxe)
 		
 class ConsumableItem(Item):
 	"""Consumable Item"""
@@ -256,4 +377,18 @@ dire_wolf = DireWolf()
 dire_wolf.stats()
 autumn_herbs.use(dire_wolf)
 dire_wolf.stats()
+
+cowl = CowlTheScaredCrow()
+print "Use it the first time"
+cowl.use()
+print "Use it the second time"
+cowl.use()
+
+bundleOfDynamite = BundleOfDynamite()
+bundleOfDynamite.use()
+bundleOfDynamite.use()
+
+malachiteCrystal = MalachiteCrystal()
+malachiteCrystal.use()
+malachiteCrystal.use()
 ## -------------------------End Tests-------------------------
