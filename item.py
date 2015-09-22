@@ -161,10 +161,10 @@ class SpikeMaul(KeyItem):
 
 #	Finish after making Weapon class.  Need it for testing.
 #							
-#	def use(self, Character):
+#	def use(self, character):
 #		"""Use the item."""
 #		super(SpikeMaul, self).use()
-#		if isInstance(WoodCuttingAxe) and isInstance(Hook) in Character.weapons
+#		if isInstance(WoodCuttingAxe) and isInstance(Hook) in character.weapons
 #			answer = raw_input("Would you like to combine your Wood-cutting Axe and Hook?")
 #			if answer = "yes"
 #				print "Alright!"
@@ -173,15 +173,17 @@ class SpikeMaul(KeyItem):
 #			else:
 #				print "Well, that's too bad."
 		
-#	def craft(self, woodCuttingAxe, hook):
-#		"""Craft the Worn War Axe
-#		Worn War Axe = Wood-cutting Axe + Hook """
-#		if isinstance(woodCuttingAxe, WoodCuttingAxe) and 
-#			isinstance(hook, Hook):
-#			woodCuttingAxe.delete(1)
-#			hook.delete(1)
+#	def craft(self, character, itemOne, itemTwo):
+#		"""Craft an item for the Hero.
+#		* Worn War Axe = Wood-cutting Axe + Hook """
+#		if (isinstance(itemOne, WoodCuttingAxe) and 
+#			isinstance(itemTwo, Hook)) or 
+#			(isinstance(itemOne, Hook) and 
+#			isinstance(itemTwo, WoodCuttingAxe)):
 #			wornWarAxe = WornWarAxe()
-#			Character.weapons.add(wornWarAxe)
+#			character.weapons.delete(itemOne)
+#			character.weapons.delete(itemTwo)
+#			character.weapons.add(wornWarAxe)
 		
 class ConsumableItem(Item):
 	"""Consumable Item"""
