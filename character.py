@@ -44,6 +44,9 @@ class Hero(Character):
 		self.weapon = None
 		self.armor = None
 		self.accessory = None
+		self.weapons = []
+		self.armors = []
+		self.accessories = []
 		self.key_items = []
 		self.consumables = []
 		self.movement = 1
@@ -119,7 +122,8 @@ Hero appears...finish implementing this.
 	def win(self, experience):
 		"""
 		Win a battle against an Enemy.
-		  +x levels = (total experience gained / 500) - (experience gained before win / 500)
+		  +x levels = (total experience gained / 500) - 
+		  			  (experience gained before win / 500)
 		"""
 		current_level = self.experience / 500
 		self.experience +=	experience
@@ -167,14 +171,17 @@ Hero appears...finish implementing this.
   Weapon: %s
   Armor: %s
   Accessory: %s
+  Weapons: %s
+  Armors: %s
+  Accessories: %s
   Key Items: %s
   Consumables: %s
   Movement: %s
   Experience Gained: %s\n
 	""" % (self.name, self.level, self.hp, self.max_hp, self.mp, self.max_mp, 
 		self.strength, self.defense, self.speed, self.weapon, self.armor, 
-		self.accessory, self.key_items, self.consumables, self.movement, 
-		self.experience)
+		self.accessory, self.weapons, self.armors, self.accessories, self.key_items, 
+		self.consumables, self.movement, self.experience)
 	
 	def talk(self, npc):
 		"""Talks to the Hero."""
