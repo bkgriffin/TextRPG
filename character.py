@@ -18,7 +18,6 @@ __status__     = "Development"
 from sys import exit
 from random import randint
 
-
 class Character(object):
 	"""Character"""
 	def __init__(self, name):
@@ -179,8 +178,10 @@ Hero appears...finish implementing this.
   Movement: %s
   Experience Gained: %s\n
 	""" % (self.name, self.level, self.hp, self.max_hp, self.mp, self.max_mp, 
-		self.strength, self.defense, self.speed, self.weapon, self.armor, 
-		self.accessory, self.weapons, self.armors, self.accessories, self.key_items, 
+		self.strength, self.defense, self.speed, self.weapon, self.armor, self.accessory, 
+		[', '.join(str(a.name) for a in self.weapons)], 
+		[', '.join(str(b.name) for b in self.armors)], 
+		[', '.join(str(c.name) for c in self.accessories)], self.key_items, 
 		self.consumables, self.movement, self.experience)
 	
 	def talk(self, npc):
