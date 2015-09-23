@@ -35,7 +35,7 @@ class Accessory(object):
 		
 	def stats(self):
 		"""Prints the Accessory's stats to the screen."""
-		print """-*-^_|/_^\|/^_-* %s *-^_\|/_^\|^_-*-	\n
+		print """-*-^~|/~^\|/^~-* %s *-^~\|/~^\|^~-*-	\n
   Description: 
   \t%s
   Quantity: 
