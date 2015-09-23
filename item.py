@@ -322,11 +322,21 @@ class AutumnHerbs(ConsumableItem):
 		super(AutumnHerbs, self).__init__("Autumn Herbs", 
 			"Herbs, crisp from the Autumn air.", "+5", "0", "0", "0", "0", "0")
 			
+	def use(self):
+		"""Use the item."""
+		super(AutumnHerbs, self).use()
+		print "Autumn Herbs: Finish implementing this..."
+			
 class SpringWater(ConsumableItem):
 	"""Spring Water"""
 	def __init__(self):
 		super(SpringWater, self).__init__("Spring Water", 
 			"Water, scooped from a natural spring.", "0", "+5", "0", "0", "0", "0")
+			
+	def use(self):
+		"""Use the item."""
+		super(SpringWater, self).use()
+		print "Spring Water: Finish implementing this..."
 			
 class GardenVegetables(ConsumableItem):
 	"""Garden Vegetables"""
@@ -334,6 +344,11 @@ class GardenVegetables(ConsumableItem):
 		super(GardenVegetables, self).__init__("Garden Vegetables", 
 			"Garden vegetables, pulled from the Earth.", 
 			"0", "0", "0", "0", "0", "0")
+			
+	def use(self):
+		"""Use the item."""
+		super(GardenVegetables, self).use()
+		print "Garden Vegetables: Finish implementing this..."
 		
 ## -------------------------Tests below-------------------------
 
@@ -369,7 +384,7 @@ garden_vegetables.delete(-1)
 garden_vegetables.stats()
 newguy = Hero("j")
 newguy.stats()
-garden_vegetables.use(newguy)
+garden_vegetables.use(new_guy)
 newguy.stats()
 
 newdude = NPC("dude", "he has a plan.")
@@ -382,15 +397,15 @@ dire_wolf.stats()
 
 cowl = CowlTheScaredCrow()
 print "Use it the first time"
-cowl.use()
+cowl.use(newguy)
 print "Use it the second time"
-cowl.use()
+cowl.use(newguy)
 
 bundleOfDynamite = BundleOfDynamite()
-bundleOfDynamite.use()
-bundleOfDynamite.use()
+bundleOfDynamite.use(newguy)
+bundleOfDynamite.use(newguy)
 
 malachiteCrystal = MalachiteCrystal()
-malachiteCrystal.use()
-malachiteCrystal.use()
+malachiteCrystal.use(newguy)
+malachiteCrystal.use(newguy)
 ## -------------------------End Tests-------------------------
