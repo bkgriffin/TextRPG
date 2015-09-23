@@ -158,7 +158,7 @@ Hero appears...finish implementing this.
 		]
 		print ending[randint(0, len(ending)-1)]
 		exit(1)
-		
+	
 	def stats(self):
 		"""Prints the Hero's stats to the screen."""
 		print """-%s\'s Stats-

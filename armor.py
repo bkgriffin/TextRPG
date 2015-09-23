@@ -4,7 +4,7 @@
 #
 # Valley of Ithmas
 #
-# ~Weapon class~
+# ~Armor class~
 # 
 __author__     = "Brandon Griffin"
 __copyright__  = "Copyright 2015"
@@ -19,8 +19,8 @@ from sys import exit
 from character import Character, Hero
 
 
-class Weapon(object):
-	"""Weapon"""
+class Armor(object):
+	"""Armor"""
 	def __init__(self, name, description, quantity, 
 				max_hp, max_mp, strength, defense, speed, movement):
 		self.name = name
@@ -32,10 +32,10 @@ class Weapon(object):
 		self.defense = defense
 		self.speed = speed
 		self.movement = movement
-	
+		
 	def stats(self):
-		"""Prints the Weapons's stats to the screen."""
-		print """-*-^^|/^^\|/^^-* %s *-^^\|/^^\|^^-*-	\n
+		"""Prints the Armor's stats to the screen."""
+		print """-*-^`|/`^\|/^`-* %s *-^`\|/`^\|^`-*-	\n
   Description: 
   \t%s
   Quantity: 
@@ -52,18 +52,18 @@ class Weapon(object):
 				self.movement)
 		
 	def add(self, quantity):
-		"""Add to the quantity of a Weapon"""
+		"""Add to the quantity of Armor"""
 		self.quantity += quantity
 		
 	def delete(self, quantity):
-		"""Delete from the quantity of a Weapon"""
+		"""Delete from the quantity of Armor"""
 		if(quantity==-1 or self.quantity < quantity):
 			self.quantity = 0
 		else:
 			self.quantity -= quantity
 			
 	def activate(self, character):
-		"""Activate the weapon's effects."""
+		"""Activate the Armor's effects."""
 		if isinstance(character, Hero):
 			if self.max_hp[0] == '+':
 				character.max_hp = character.max_hp + int(self.max_hp[1:])
@@ -153,9 +153,9 @@ class Weapon(object):
 					
 		else:
 			print "%s doesn't work that way." % self.name 
-			
+	
 	def deactivate(self, character):
-		"""Deactivate the weapon's effects."""
+		"""Deactivate the Armor's effects."""
 		if isinstance(character, Hero):
 			if self.max_hp[0] == '-':
 				character.max_hp = character.max_hp + int(self.max_hp[1:])
@@ -247,92 +247,93 @@ class Weapon(object):
 			print "%s doesn't work that way." % self.name 
 			
 	def equip(self, character):
-		"""Equip a Weapon."""
+		"""Equip Armor."""
 		# Unequip old item
-		if character.weapon != None:
-			character.weapons.append(character.weapon)	
-			
+		if character.armor != None:
+			character.armors.append(character.armor)	
+				
 		# Equip new item	
-		character.weapon = self	
+		character.armor = self	
 		self.activate(character)						
-		
+				
 		# Remove equipped item from inventory
-		if self in character.weapons:
-			character.weapons.remove(self)	
+		if item in character.armors:
+			character.armors.remove(item)	
 			
-def remove(self, character):
-	"""Remove a Weapon."""
-	# Unequip old item
-	if character.weapon != None:
-		character.weapons.append(character.weapon)	
-			
-	# Equip new item
-	character.weapon.deactivate(character)
-	character.weapon = 	None
+	def remove(self, character):
+		"""Remove Armor."""
+		# Unequip old item
+		if character.armor != None:
+			character.armors.append(character.armor)	
+				
+		# Equip new item
+		character.armor.deactivate(character)
+		character.armor = None				
 
-class WoodCuttingAxe(Weapon):
-	"""Wood-cutting Axe."""
+class AnimalCarcass(Armor):
+	"""Animal Carcass."""
 	def __init__(self):
-		super(WoodCuttingAxe, self).__init__("Wood-cutting Axe", 
-				"An old, weathered axe found in a stump", 1, "0", "0", "+2", "0", "0", "0")
+		super(AnimalCarcass, self).__init__("Animal Carcass", 
+				"The smell...", 1, "0", "-1", "0", "+1", "0", "0")
 				
-class RustedHook(Weapon):
-	"""Rusted Hook."""
+class ScarecrowClothes(Armor):
+	"""Scarecrow Clothes."""
 	def __init__(self):
-		super(RustedHook, self).__init__("Rusted Hook", 
-				"A flattened, rusted hook, found holding a bucket in the well.", 1, 
-				"0", "0", "+3", "-1", "0", "0")
+		super(ScarecrowClothes, self).__init__("Scarecrow Clothes", 
+				"Quite fashionable, for a stick and some hay.", 1, 
+				"0", "0", "0", "+1", "0", "0")
 				
-class WornWarAxe(Weapon):
-	"""Worn War Axe."""
+class BizzleBeakArmor(Armor):
+	"""Bizzle Beak Armor."""
 	def __init__(self):
-		super(WornWarAxe, self).__init__("Worn War Axe", 
-				"An axe fashioned from a wood-cutting axe and a rusted hook.", 1, 
-				"0", "0", "+3", "+2", "0", "0")
+		super(BizzleBeakArmor, self).__init__("Bizzle Beak Armor", 
+				"A murder of obsidian beaks and black feathers.", 1, 
+				"+5", "0", "+2", "0", "0", "0")
+		
 		
 		
 		
 ## -------------------------Tests below-------------------------
 
-woodCuttingAxe = WoodCuttingAxe()
-woodCuttingAxe.stats()
-woodCuttingAxe.add(3)
-woodCuttingAxe.stats()
-woodCuttingAxe.delete(1)
-woodCuttingAxe.stats()
+animalCarcass = AnimalCarcass()
+animalCarcass.stats()
+animalCarcass.add(3)
+animalCarcass.stats()
+animalCarcass.delete(1)
+animalCarcass.stats()
 
-rustedHook = RustedHook()
-rustedHook.stats()
-rustedHook.add(3)
-rustedHook.stats()
-rustedHook.delete(1)
-rustedHook.stats()
+scarecrowClothes = ScarecrowClothes()
+scarecrowClothes.stats()
+scarecrowClothes.add(3)
+scarecrowClothes.stats()
+scarecrowClothes.delete(1)
+scarecrowClothes.stats()
 
-wornWarAxe = WornWarAxe()
-wornWarAxe.stats()
-wornWarAxe.add(3)
-wornWarAxe.stats()
-wornWarAxe.delete(1)
-wornWarAxe.stats()
+bizzleBeakArmor = BizzleBeakArmor()
+bizzleBeakArmor.stats()
+bizzleBeakArmor.add(3)
+bizzleBeakArmor.stats()
+bizzleBeakArmor.delete(1)
+bizzleBeakArmor.stats()
 
 newguy = Hero("Mememe")
 newguy.stats()
-newguy.weapons.append(woodCuttingAxe)
-newguy.weapons.append(rustedHook)
-newguy.weapons.append(wornWarAxe)
+newguy.armors.append(animalCarcass)
+newguy.armors.append(scarecrowClothes)
+newguy.armors.append(bizzleBeakArmor)
 
-woodCuttingAxe.equip(newguy)
+animalCarcass.equip(newguy)
 newguy.stats()
-woodCuttingAxe.remove(newguy)
-newguy.stats()
-
-rustedHook.equip(newguy)
-newguy.stats()
-rustedHook.remove(newguy)
+animalCarcass.remove(newguy)
 newguy.stats()
 
-wornWarAxe.equip(newguy)
+scarecrowClothes.equip(newguy)
 newguy.stats()
-wornWarAxe.remove(newguy)
+scarecrowClothes.remove(newguy)
+newguy.stats()
+
+bizzleBeakArmor.remove(newguy)
+newguy.stats()
+bizzleBeakArmor.remove(newguy)
 newguy.stats()
 ## -------------------------End Tests-------------------------

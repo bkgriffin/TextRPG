@@ -4,7 +4,7 @@
 #
 # Valley of Ithmas
 #
-# ~Weapon class~
+# ~Accessory class~
 # 
 __author__     = "Brandon Griffin"
 __copyright__  = "Copyright 2015"
@@ -19,8 +19,8 @@ from sys import exit
 from character import Character, Hero
 
 
-class Weapon(object):
-	"""Weapon"""
+class Accessory(object):
+	"""Accessory"""
 	def __init__(self, name, description, quantity, 
 				max_hp, max_mp, strength, defense, speed, movement):
 		self.name = name
@@ -32,10 +32,10 @@ class Weapon(object):
 		self.defense = defense
 		self.speed = speed
 		self.movement = movement
-	
+		
 	def stats(self):
-		"""Prints the Weapons's stats to the screen."""
-		print """-*-^^|/^^\|/^^-* %s *-^^\|/^^\|^^-*-	\n
+		"""Prints the Accessory's stats to the screen."""
+		print """-*-^_|/_^\|/^_-* %s *-^_\|/_^\|^_-*-	\n
   Description: 
   \t%s
   Quantity: 
@@ -52,18 +52,18 @@ class Weapon(object):
 				self.movement)
 		
 	def add(self, quantity):
-		"""Add to the quantity of a Weapon"""
+		"""Add to the quantity of an Accessory"""
 		self.quantity += quantity
 		
 	def delete(self, quantity):
-		"""Delete from the quantity of a Weapon"""
+		"""Delete from the quantity of an Accessory"""
 		if(quantity==-1 or self.quantity < quantity):
 			self.quantity = 0
 		else:
 			self.quantity -= quantity
 			
 	def activate(self, character):
-		"""Activate the weapon's effects."""
+		"""Activate the accessory's effects."""
 		if isinstance(character, Hero):
 			if self.max_hp[0] == '+':
 				character.max_hp = character.max_hp + int(self.max_hp[1:])
@@ -153,9 +153,9 @@ class Weapon(object):
 					
 		else:
 			print "%s doesn't work that way." % self.name 
-			
+	
 	def deactivate(self, character):
-		"""Deactivate the weapon's effects."""
+		"""Deactivate the accessory's effects."""
 		if isinstance(character, Hero):
 			if self.max_hp[0] == '-':
 				character.max_hp = character.max_hp + int(self.max_hp[1:])
@@ -206,14 +206,12 @@ class Weapon(object):
 		elif isinstance(character, Enemy):
 			if self.max_hp[0] == '-':
 				character.max_hp = character.max_hp + int(self.max_hp[1:])
-				if character.hp > character.max_hp:
-					character.hp = character.max_hp
 			elif self.max_hp[0] == '+':
 				character.max_hp = character.max_hp - int(self.max_hp[1:])
 				if character.hp <= 0:
 					character.die()
 			
-			if self.max_mp[0] == '-':
+			if self.max_mp[0] == '-' and character.mp < character.max_mp:
 				character.max_mp = character.max_mp + int(self.max_mp[1:])
 				if character.mp > character.max_mp:
 					character.mp = character.max_mp
@@ -247,92 +245,93 @@ class Weapon(object):
 			print "%s doesn't work that way." % self.name 
 			
 	def equip(self, character):
-		"""Equip a Weapon."""
+		"""Equip an Accessory."""
 		# Unequip old item
-		if character.weapon != None:
-			character.weapons.append(character.weapon)	
-			
+		if character.accessory != None:
+			character.accessories.append(character.accessory)	
+				
 		# Equip new item	
-		character.weapon = self	
+		character.accessory = self	
 		self.activate(character)						
-		
+			
 		# Remove equipped item from inventory
-		if self in character.weapons:
-			character.weapons.remove(self)	
+		if self in character.accessories:
+			character.accessories.remove(self)	
+		
+	def remove(self, character):
+		"""Remove an Accessory."""
+		# Unequip old item
+		if character.accessory != None:
+			character.accessories.append(character.accessory)	
 			
-def remove(self, character):
-	"""Remove a Weapon."""
-	# Unequip old item
-	if character.weapon != None:
-		character.weapons.append(character.weapon)	
+		# Equip new item
+		character.accessory.deactivate(character)
+		character.accessory = None	
 			
-	# Equip new item
-	character.weapon.deactivate(character)
-	character.weapon = 	None
-
-class WoodCuttingAxe(Weapon):
-	"""Wood-cutting Axe."""
+class RottingBucket(Accessory):
+	"""Rotting Bucket."""
 	def __init__(self):
-		super(WoodCuttingAxe, self).__init__("Wood-cutting Axe", 
-				"An old, weathered axe found in a stump", 1, "0", "0", "+2", "0", "0", "0")
+		super(RottingBucket, self).__init__("Rotting Bucket", 
+				"A decayed, rotting wooden bucket.", 1, "0", "+2", "0", "-1", "0", "0")
 				
-class RustedHook(Weapon):
-	"""Rusted Hook."""
+class StoneUrn(Accessory):
+	"""Stone Urn."""
 	def __init__(self):
-		super(RustedHook, self).__init__("Rusted Hook", 
-				"A flattened, rusted hook, found holding a bucket in the well.", 1, 
-				"0", "0", "+3", "-1", "0", "0")
+		super(StoneUrn, self).__init__("Stone Urn", 
+				"A marble, stone urn.  The rim glimmers in the moonlight.", 1, 
+				"0", "+5", "0", "0", "0", "0")
 				
-class WornWarAxe(Weapon):
-	"""Worn War Axe."""
+class OldMare(Accessory):
+	"""Old Mare."""
 	def __init__(self):
-		super(WornWarAxe, self).__init__("Worn War Axe", 
-				"An axe fashioned from a wood-cutting axe and a rusted hook.", 1, 
-				"0", "0", "+3", "+2", "0", "0")
+		super(OldMare, self).__init__("Old Mare", 
+				"An old mare, found in the back of the barn.", 1, 
+				"0", "0", "0", "0", "0", "+2")
+		
 		
 		
 		
 ## -------------------------Tests below-------------------------
 
-woodCuttingAxe = WoodCuttingAxe()
-woodCuttingAxe.stats()
-woodCuttingAxe.add(3)
-woodCuttingAxe.stats()
-woodCuttingAxe.delete(1)
-woodCuttingAxe.stats()
+rottingBucket = RottingBucket()
+rottingBucket.stats()
+rottingBucket.add(3)
+rottingBucket.stats()
+rottingBucket.delete(1)
+rottingBucket.stats()
 
-rustedHook = RustedHook()
-rustedHook.stats()
-rustedHook.add(3)
-rustedHook.stats()
-rustedHook.delete(1)
-rustedHook.stats()
+stoneUrn = StoneUrn()
+stoneUrn.stats()
+stoneUrn.add(3)
+stoneUrn.stats()
+stoneUrn.delete(1)
+stoneUrn.stats()
 
-wornWarAxe = WornWarAxe()
-wornWarAxe.stats()
-wornWarAxe.add(3)
-wornWarAxe.stats()
-wornWarAxe.delete(1)
-wornWarAxe.stats()
+oldMare = OldMare()
+oldMare.stats()
+oldMare.add(3)
+oldMare.stats()
+oldMare.delete(1)
+oldMare.stats()
 
 newguy = Hero("Mememe")
 newguy.stats()
-newguy.weapons.append(woodCuttingAxe)
-newguy.weapons.append(rustedHook)
-newguy.weapons.append(wornWarAxe)
+newguy.accessories.append(rottingBucket)
+newguy.accessories.append(stoneUrn)
+newguy.accessories.append(oldMare)
 
-woodCuttingAxe.equip(newguy)
+rottingBucket.equip(newguy)
 newguy.stats()
-woodCuttingAxe.remove(newguy)
-newguy.stats()
-
-rustedHook.equip(newguy)
-newguy.stats()
-rustedHook.remove(newguy)
+rottingBucket.remove(newguy)
 newguy.stats()
 
-wornWarAxe.equip(newguy)
+stoneUrn.equip(newguy)
 newguy.stats()
-wornWarAxe.remove(newguy)
+stoneUrn.remove(newguy)
+newguy.stats()
+
+oldMare.equip(newguy)
+newguy.stats()
+oldMare.remove(newguy)
 newguy.stats()
 ## -------------------------End Tests-------------------------
