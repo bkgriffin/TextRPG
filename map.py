@@ -64,13 +64,11 @@ class Map(object):
 				print "There's nothing there..."
 			else:
 				self.location = globals()[current_room.north]
-				self.location = globals()[current_room.north]
 				self.location.enter()
 		elif direction == "south" or direction == "South":
 			if current_room.south == None:
 				print "There's nothing there..."
 			else:
-				self.location = globals()[current_room.south]
 				self.location = globals()[current_room.south]
 				self.location.enter()
 		elif direction == "east" or direction == "East":
@@ -78,13 +76,11 @@ class Map(object):
 				print "There's nothing there..."
 			else:
 				self.location = globals()[current_room.east]
-				self.location = globals()[current_room.east]
 				self.location.enter()
 		elif direction == "west" or direction == "West":
 			if current_room.west == None:
 				print "There's nothing there..."
 			else:
-				self.location = globals()[current_room.west]
 				self.location = globals()[current_room.west]
 				self.location.enter()
 		else:
