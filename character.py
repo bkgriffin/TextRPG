@@ -17,6 +17,7 @@ __status__     = "Development"
 
 from sys import exit
 from random import randint
+from room import *
 
 class Character(object):
 	"""Character"""
@@ -50,6 +51,8 @@ class Hero(Character):
 		self.consumables = []
 		self.movement = 1
 		self.experience = 0
+		self.map = Map()
+		#self.compass = Compass()
 		
 	def introduction(self):
 		"""Introduction"""
@@ -178,14 +181,14 @@ Hero appears...finish implementing this.
   Movement: %s
   Experience Gained: %s\n
 	""" % (self.name, self.level, self.hp, self.max_hp, self.mp, self.max_mp, 
-		self.strength, self.defense, self.speed, self.weapon, self.armor, self.accessory, 
+		self.strength, self.defense, self.speed, self.weapon, self.armor, self.accessory,
 		[', '.join(str(a.name) for a in self.weapons)], 
 		[', '.join(str(b.name) for b in self.armors)], 
 		[', '.join(str(c.name) for c in self.accessories)], self.key_items, 
 		self.consumables, self.movement, self.experience)
 	
 	def talk(self, npc):
-		"""Talks to the Hero."""
+		"""Talk to the NPC."""
 		if isinstance(npc, NPC):
 			npc.talk(self)
 		else:
@@ -549,5 +552,9 @@ brandon.attack(npcGuy)
 dire_wolf.attack(npcGuy)
 brandon.defend(npcGuy)
 dire_wolf.defend(npcGuy)
+
+brandon.map.use()
+brandon.map.move("north")
+brandon.map.use()
 
 ## -------------------------End Tests-------------------------

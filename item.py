@@ -16,7 +16,6 @@ __email__      = "brandon.k.griffin@gmail.com"
 __status__     = "Development"
 
 from sys import exit
-from random import randint
 from character import Character, Hero, Enemy, NPC, DireWolf
 
 
