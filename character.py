@@ -17,7 +17,7 @@ __status__     = "Development"
 
 from sys import exit
 from random import randint
-from room import *
+from map import Map
 
 class Character(object):
 	"""Character"""

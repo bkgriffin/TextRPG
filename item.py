@@ -18,7 +18,6 @@ __status__     = "Development"
 from sys import exit
 from character import Character, Hero, Enemy, NPC, DireWolf
 
-
 class Item(object):
 	"""Item"""
 	def __init__(self, name, description, quantity):
