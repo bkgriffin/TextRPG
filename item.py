@@ -16,7 +16,9 @@ __email__      = "brandon.k.griffin@gmail.com"
 __status__     = "Development"
 
 from sys import exit
+import time
 from character import Character, Hero, Enemy, NPC, DireWolf
+from weapon import *
 
 class Item(object):
 	"""Item"""
@@ -156,32 +158,41 @@ class SpikeMaul(KeyItem):
 	def unlock_effect(self):
 		"""Unlock the first time a Hero uses this Key Item."""
 		self.effect = """You turn the spike maul over in your hands..."""
-
-#	Finish after making Weapon class.  Need it for testing.
-#							
-#	def use(self, character):
-#		"""Use the item."""
-#		super(SpikeMaul, self).use()
-#		if isInstance(WoodCuttingAxe) and isInstance(Hook) in character.weapons
-#			answer = raw_input("Would you like to combine your Wood-cutting Axe and Hook?")
-#			if answer = "yes"
-#				print "Alright!"
-#				self.craft(Character.weapons.WoodCuttingAxe, 
-#						Character.weapons.WoodCuttingAxe)
-#			else:
-#				print "Well, that's too bad."
+				
+	def use(self, character):
+		"""Use the item."""
+		super(SpikeMaul, self).use()
+		isWoodCuttingAxePresent = False
+		isHookPresent = False
+		for weapon in character.weapons:
+			if isinstance(weapon, WoodCuttingAxe):
+				isWoodCuttingAxePresent = True
+			elif isinstance(weapon, RustedHook):
+				isRustedHookPresent = True
+		answer = raw_input("Would you like to combine your Wood-cutting Axe and Rusted Hook? ").lower()
+		if answer == "yes" or answer == "y":
+			time.sleep(1)
+			print "*DINK*"
+			time.sleep(1)
+			print "*DINK* *DINK*"
+			time.sleep(1)
+			print "*DINK* *DINK* *DINK!*"
+			self.craft(character)
+			print "You crafted the Worn War Axe!!"
+		else:
+			print "Well, that's really unfortunate..."
 		
-#	def craft(self, character, itemOne, itemTwo):
-#		"""Craft an item for the Hero.
-#		* Worn War Axe = Wood-cutting Axe + Hook """
-#		if (isinstance(itemOne, WoodCuttingAxe) and 
-#			isinstance(itemTwo, Hook)) or 
-#			(isinstance(itemOne, Hook) and 
-#			isinstance(itemTwo, WoodCuttingAxe)):
-#			wornWarAxe = WornWarAxe()
-#			character.weapons.delete(itemOne)
-#			character.weapons.delete(itemTwo)
-#			character.weapons.add(wornWarAxe)
+	def craft(self, character):
+		"""Craft an item for the Hero.
+			- Worn War Axe = Wood-cutting Axe + Rusted Hook """
+		for weapon in character.weapons:
+			if isinstance(weapon, WoodCuttingAxe):
+				character.weapons.remove(weapon)
+		for weapon in character.weapons:
+			if isinstance(weapon, RustedHook):
+				character.weapons.remove(weapon)
+		wornWarAxe = WornWarAxe()
+		character.weapons.append(wornWarAxe)
 		
 class ConsumableItem(Item):
 	"""Consumable Item"""
@@ -320,9 +331,9 @@ class AutumnHerbs(ConsumableItem):
 		super(AutumnHerbs, self).__init__("Autumn Herbs", 
 			"Herbs, crisp from the Autumn air.", "+5", "0", "0", "0", "0", "0")
 			
-	def use(self):
+	def use(self, character):
 		"""Use the item."""
-		super(AutumnHerbs, self).use()
+		super(AutumnHerbs, self).use(character)
 		print "Autumn Herbs: Finish implementing this..."
 			
 class SpringWater(ConsumableItem):
@@ -331,9 +342,9 @@ class SpringWater(ConsumableItem):
 		super(SpringWater, self).__init__("Spring Water", 
 			"Water, scooped from a natural spring.", "0", "+5", "0", "0", "0", "0")
 			
-	def use(self):
+	def use(self, character):
 		"""Use the item."""
-		super(SpringWater, self).use()
+		super(SpringWater, self).use(character)
 		print "Spring Water: Finish implementing this..."
 			
 class GardenVegetables(ConsumableItem):
@@ -343,10 +354,10 @@ class GardenVegetables(ConsumableItem):
 			"Garden vegetables, pulled from the Earth.", 
 			"0", "0", "0", "0", "0", "0")
 			
-	def use(self):
+	def use(self, character):
 		"""Use the item."""
-		super(GardenVegetables, self).use()
-		print "Garden Vegetables: Finish implementing this..."
+		super(GardenVegetables, self).use(character)
+		print "They don't seem to have any effect on you..."
 		
 ## -------------------------Tests below-------------------------
 
@@ -382,7 +393,7 @@ garden_vegetables.delete(-1)
 garden_vegetables.stats()
 newguy = Hero("j")
 newguy.stats()
-garden_vegetables.use(new_guy)
+garden_vegetables.use(newguy)
 newguy.stats()
 
 newdude = NPC("dude", "he has a plan.")
@@ -395,15 +406,15 @@ dire_wolf.stats()
 
 cowl = CowlTheScaredCrow()
 print "Use it the first time"
-cowl.use(newguy)
+cowl.use()
 print "Use it the second time"
-cowl.use(newguy)
+cowl.use()
 
 bundleOfDynamite = BundleOfDynamite()
-bundleOfDynamite.use(newguy)
-bundleOfDynamite.use(newguy)
+bundleOfDynamite.use()
+bundleOfDynamite.use()
 
 malachiteCrystal = MalachiteCrystal()
-malachiteCrystal.use(newguy)
-malachiteCrystal.use(newguy)
+malachiteCrystal.use()
+malachiteCrystal.use()
 ## -------------------------End Tests-------------------------

@@ -184,8 +184,10 @@ Hero appears...finish implementing this.
 		self.strength, self.defense, self.speed, self.weapon, self.armor, self.accessory,
 		[', '.join(str(a.name) for a in self.weapons)], 
 		[', '.join(str(b.name) for b in self.armors)], 
-		[', '.join(str(c.name) for c in self.accessories)], self.key_items, 
-		self.consumables, self.movement, self.experience)
+		[', '.join(str(c.name) for c in self.accessories)], 
+		[', '.join(str(d.name) for d in self.key_items)], 
+		[', '.join(str(e.name) for e in self.consumables)], 
+		self.movement, self.experience)
 	
 	def talk(self, npc):
 		"""Talk to the NPC."""
