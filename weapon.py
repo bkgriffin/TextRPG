@@ -260,15 +260,15 @@ class Weapon(object):
 		if self in character.weapons:
 			character.weapons.remove(self)	
 			
-def remove(self, character):
-	"""Remove a Weapon."""
-	# Unequip old item
-	if character.weapon != None:
-		character.weapons.append(character.weapon)	
+	def remove(self, character):
+		"""Remove a Weapon."""
+		# Unequip old item
+		if character.weapon != None:
+			character.weapons.append(character.weapon)	
 			
-	# Equip new item
-	character.weapon.deactivate(character)
-	character.weapon = 	None
+			# Equip new item
+			character.weapon.deactivate(character)
+			character.weapon = 	None
 
 class WoodCuttingAxe(Weapon):
 	"""Wood-cutting Axe."""

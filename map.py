@@ -77,26 +77,27 @@ class Map(object):
 	
 	def move(self, direction):
 		"""Move the location."""
+		direction = direction.lower()
 		current_room = self.location
-		if direction == "north" or direction == "North":
+		if direction == "north":
 			if current_room.north == None:
 				print "There's nothing there..."
 			else:
 				self.location = globals()[current_room.north]
 				self.location.enter()
-		elif direction == "south" or direction == "South":
+		elif direction == "south":
 			if current_room.south == None:
 				print "There's nothing there..."
 			else:
 				self.location = globals()[current_room.south]
 				self.location.enter()
-		elif direction == "east" or direction == "East":
+		elif direction == "east":
 			if current_room.east == None:
 				print "There's nothing there..."
 			else:
 				self.location = globals()[current_room.east]
 				self.location.enter()
-		elif direction == "west" or direction == "West":
+		elif direction == "west":
 			if current_room.west == None:
 				print "There's nothing there..."
 			else:

@@ -257,8 +257,8 @@ class Armor(object):
 		self.activate(character)						
 				
 		# Remove equipped item from inventory
-		if item in character.armors:
-			character.armors.remove(item)	
+		if self in character.armors:
+			character.armors.remove(self)	
 			
 	def remove(self, character):
 		"""Remove Armor."""
@@ -266,9 +266,9 @@ class Armor(object):
 		if character.armor != None:
 			character.armors.append(character.armor)	
 				
-		# Equip new item
-		character.armor.deactivate(character)
-		character.armor = None				
+			# Equip new item
+			character.armor.deactivate(character)
+			character.armor = None				
 
 class AnimalCarcass(Armor):
 	"""Animal Carcass."""
