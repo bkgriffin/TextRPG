@@ -58,6 +58,7 @@ class Engine(object):
 		main_character.introduction()
 		while True:
 			command = raw_input("> ").lower()
+			print ""
 			if command == "menu":
 				print """
 status/stats 
