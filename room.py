@@ -215,6 +215,188 @@ class B1(Room):
 	def exit(self):
 		"""Exit the Room."""
 		print "Exit B1"
+		
+class E4(Room):
+	"""Room E4"""
+	def __init__(self):
+		super(E4, self).__init__("Another Room", "E4", "Another room of the valley.", 
+				None, "F5", "D4", None, None)
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter E4"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit E4"
+		
+class F5(Room):
+	"""Room F5"""
+	def __init__(self):
+		super(F5, self).__init__("Another Room", "F5", "Another room of the valley.", 
+				None, None, "E4", None, "F6")
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter F5"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit F5"
+		
+class F6(Room):
+	"""Room F6"""
+	def __init__(self):
+		super(F6, self).__init__("Another Room", "F6", "Another room of the valley.", 
+				None, None, None, None, "F5")
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter F6"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit F6"
+		
+class D5(Room):
+	"""Room D5"""
+	def __init__(self):
+		super(D5, self).__init__("Another Room", "D5", "Another room of the valley.", 
+				None, None, None, "D6", "D4")
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter D5"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit D5"
+		
+class D6(Room):
+	"""Room D6"""
+	def __init__(self):
+		super(D6, self).__init__("Another Room", "D6", "Another room of the valley.", 
+				None, None, "C6", None, "D5")
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter D6"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit D6"
+		
+class C6(Room):
+	"""Room C6"""
+	def __init__(self):
+		super(C6, self).__init__("Another Room", "C6", "Another room of the valley.", 
+				None, "D6", "B6", None, None)
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter C6"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit C6"
+		
+class B6(Room):
+	"""Room B6"""
+	def __init__(self):
+		super(B6, self).__init__("Another Room", "B6", "Another room of the valley.", 
+				None, "C6", None, "B7", None)
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter B6"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit B6"
+		
+class B7(Room):
+	"""Room B7"""
+	def __init__(self):
+		super(B7, self).__init__("Another Room", "B7", "Another room of the valley.", 
+				None, "C7", None, "B8", "B6")
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter B7"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit B7"
+		
+class B8(Room):
+	"""Room B8"""
+	def __init__(self):
+		super(B8, self).__init__("Another Room", "B8", "Another room of the valley.", 
+				None, None, "A8", None, "B7")
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter B8"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit B8"
+		
+class A8(Room):
+	"""Room A8"""
+	def __init__(self):
+		super(A8, self).__init__("Another Room", "A8", "Another room of the valley.", 
+				None, "B8", None, None, None)
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter A8"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit A8"
+		
+class C7(Room):
+	"""Room C7"""
+	def __init__(self):
+		super(C7, self).__init__("Another Room", "C7", "Another room of the valley.", 
+				None, None, "B7", "C8", None)
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter C7"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit C7"
+		
+class C8(Room):
+	"""Room C8"""
+	def __init__(self):
+		super(C8, self).__init__("Another Room", "C8", "Another room of the valley.", 
+				None, "D8", None, None, "C7")
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter C8"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit C8"
+		
+class D8(Room):
+	"""Room D8"""
+	def __init__(self):
+		super(D8, self).__init__("Another Room", "D8", "Another room of the valley.", 
+				None, None, "C8", None, None)
+				
+	def enter(self):
+		"""Enter the Room."""
+		print """Enter D8"""
+		
+	def exit(self):
+		"""Exit the Room."""
+		print "Exit D8"
 
 
 ## -------------------------Tests below-------------------------
@@ -268,5 +450,55 @@ B1 = B1()
 B1.stats()
 B1.enter()
 B1.exit()
+
+D5 = D5()
+D5.stats()
+D5.enter()
+D5.exit()
+
+D6 = D6()
+D6.stats()
+D6.enter()
+D6.exit()
+
+C6 = C6()
+C6.stats()
+C6.enter()
+C6.exit()
+
+B6 = B6()
+B6.stats()
+B6.enter()
+B6.exit()
+
+C7 = C7()
+C7.stats()
+C7.enter()
+C7.exit()
+
+C8 = C8()
+C8.stats()
+C8.enter()
+C8.exit()
+
+D8 = D8()
+D8.stats()
+D8.enter()
+D8.exit()
+
+B7 = B7()
+B7.stats()
+B7.enter()
+B7.exit()
+
+B8 = B8()
+B8.stats()
+B8.enter()
+B8.exit()
+
+A8 = A8()
+A8.stats()
+A8.enter()
+A8.exit()
 
 ## -------------------------End Tests-------------------------

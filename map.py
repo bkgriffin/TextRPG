@@ -23,10 +23,10 @@ class Map(object):
 	A Map contains room objects.  
 	These are the rooms in which your Hero can traverse."""
 	def __init__(self):
-		self.rooms = [A4, B4, C4, D4, D3, D2, D1, C2, B2, B1]
-		#rooms left: [E4, F5, F6, D5, D6, C6, B6, C7, C8, D8, B7, B8, A8]
+		self.rooms = [A4, B4, C4, D4, D3, D2, D1, C2, B2, B1, E4, F5, F6, D5, 
+						D6, C6, B6, C7, C8, D8, B7, B8, A8]
 		self.location = globals()['A4']
-		self.goal = globals()['B1'] #really, ['F6']
+		self.goal = globals()['F6']
 	
 	def use(self):
 		print """
