@@ -258,8 +258,8 @@ class Accessory(object):
 		if self in character.accessories:
 			character.accessories.remove(self)	
 		
-	def remove(self, character):
-		"""Remove an Accessory."""
+	def unequip(self, character):
+		"""Unequip an Accessory."""
 		# Unequip old item
 		if character.accessory != None:
 			character.accessories.append(character.accessory)	
@@ -322,16 +322,16 @@ newguy.accessories.append(oldMare)
 
 rottingBucket.equip(newguy)
 newguy.stats()
-rottingBucket.remove(newguy)
+rottingBucket.unequip(newguy)
 newguy.stats()
 
 stoneUrn.equip(newguy)
 newguy.stats()
-stoneUrn.remove(newguy)
+stoneUrn.unequip(newguy)
 newguy.stats()
 
 oldMare.equip(newguy)
 newguy.stats()
-oldMare.remove(newguy)
+oldMare.unequip(newguy)
 newguy.stats()
 ## -------------------------End Tests-------------------------
