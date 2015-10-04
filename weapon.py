@@ -260,8 +260,8 @@ class Weapon(object):
 		if self in character.weapons:
 			character.weapons.remove(self)	
 			
-	def remove(self, character):
-		"""Remove a Weapon."""
+	def unequip(self, character):
+		"""Unequip a Weapon."""
 		# Unequip old item
 		if character.weapon != None:
 			character.weapons.append(character.weapon)	
@@ -323,16 +323,16 @@ newguy.weapons.append(wornWarAxe)
 
 woodCuttingAxe.equip(newguy)
 newguy.stats()
-woodCuttingAxe.remove(newguy)
+woodCuttingAxe.unequip(newguy)
 newguy.stats()
 
 rustedHook.equip(newguy)
 newguy.stats()
-rustedHook.remove(newguy)
+rustedHook.unequip(newguy)
 newguy.stats()
 
 wornWarAxe.equip(newguy)
 newguy.stats()
-wornWarAxe.remove(newguy)
+wornWarAxe.unequip(newguy)
 newguy.stats()
 ## -------------------------End Tests-------------------------

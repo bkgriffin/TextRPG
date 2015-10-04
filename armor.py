@@ -260,8 +260,8 @@ class Armor(object):
 		if self in character.armors:
 			character.armors.remove(self)	
 			
-	def remove(self, character):
-		"""Remove Armor."""
+	def unequip(self, character):
+		"""Unequip Armor."""
 		# Unequip old item
 		if character.armor != None:
 			character.armors.append(character.armor)	
@@ -324,16 +324,16 @@ newguy.armors.append(bizzleBeakArmor)
 
 animalCarcass.equip(newguy)
 newguy.stats()
-animalCarcass.remove(newguy)
+animalCarcass.unequip(newguy)
 newguy.stats()
 
 scarecrowClothes.equip(newguy)
 newguy.stats()
-scarecrowClothes.remove(newguy)
+scarecrowClothes.unequip(newguy)
 newguy.stats()
 
-bizzleBeakArmor.remove(newguy)
+bizzleBeakArmor.unequip(newguy)
 newguy.stats()
-bizzleBeakArmor.remove(newguy)
+bizzleBeakArmor.unequip(newguy)
 newguy.stats()
 ## -------------------------End Tests-------------------------
