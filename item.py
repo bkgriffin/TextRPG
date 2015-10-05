@@ -17,7 +17,7 @@ __status__     = "Development"
 
 from sys import exit
 import time
-from character import Character, Hero, Enemy, NPC, DireWolf
+from character import *
 from weapon import *
 
 class Item(object):
