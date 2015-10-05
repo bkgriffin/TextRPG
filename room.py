@@ -122,7 +122,7 @@ class D4(Room):
 	"""Room D4"""
 	def __init__(self):
 		super(D4, self).__init__("Fourth Room", "D4", "The fourth room of the valley.", 
-				None, "E4", "C4", "D5", "D3")
+				["SpringWater"], "E4", "C4", "D5", "D3")
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -136,7 +136,8 @@ class D3(Room):
 	"""Room D3"""
 	def __init__(self):
 		super(D3, self).__init__("Another Room", "D3", "Another room of the valley.", 
-				None, None, None, "D4", "D2")
+				["BraidedRope", "RustedHook", "RottingBucket", "MalachiteCrystal"], 
+				None, None, "D4", "D2")
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -150,7 +151,7 @@ class D2(Room):
 	"""Room D2"""
 	def __init__(self):
 		super(D2, self).__init__("Another Room", "D2", "Another room of the valley.", 
-				None, None, "C2", "D3", "D1")
+				["WoodCuttingAxe"], None, "C2", "D3", "D1")
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -164,7 +165,8 @@ class D1(Room):
 	"""Room D1"""
 	def __init__(self):
 		super(D1, self).__init__("Another Room", "D1", "Another room of the valley.", 
-				None, None, None, "D2", None)
+				["GardenVegetables", "ScarecrowClothes", "CowlTheScaredCrow"], 
+				None, None, "D2", None)
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -178,7 +180,7 @@ class C2(Room):
 	"""Room C2"""
 	def __init__(self):
 		super(C2, self).__init__("Another Room", "C2", "Another room of the valley.", 
-				None, "D2", "B2", None, None)
+				["DireWolves"], "D2", "B2", None, None)
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -206,7 +208,7 @@ class B1(Room):
 	"""Room B1"""
 	def __init__(self):
 		super(B1, self).__init__("Another Room", "B1", "Another room of the valley.", 
-				None, None, None, "B2", None)
+				["OldMare", "AnimalCarcass"], None, None, "B2", None)
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -234,7 +236,7 @@ class F5(Room):
 	"""Room F5"""
 	def __init__(self):
 		super(F5, self).__init__("Another Room", "F5", "Another room of the valley.", 
-				None, None, "E4", None, "F6")
+				["TwinCyclops"], None, "E4", None, "F6")
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -262,7 +264,7 @@ class D5(Room):
 	"""Room D5"""
 	def __init__(self):
 		super(D5, self).__init__("Another Room", "D5", "Another room of the valley.", 
-				None, None, None, "D6", "D4")
+				["BizzleBeakArmor"], None, None, "D6", "D4")
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -276,7 +278,7 @@ class D6(Room):
 	"""Room D6"""
 	def __init__(self):
 		super(D6, self).__init__("Another Room", "D6", "Another room of the valley.", 
-				None, None, "C6", None, "D5")
+				["AutumnHerbs"], None, "C6", None, "D5")
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -346,7 +348,7 @@ class A8(Room):
 	"""Room A8"""
 	def __init__(self):
 		super(A8, self).__init__("Another Room", "A8", "Another room of the valley.", 
-				None, "B8", None, None, None)
+				["StoneUrn"], "B8", None, None, None)
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -360,7 +362,7 @@ class C7(Room):
 	"""Room C7"""
 	def __init__(self):
 		super(C7, self).__init__("Another Room", "C7", "Another room of the valley.", 
-				None, None, "B7", "C8", None)
+				["SandCreedpers"], None, "B7", "C8", None)
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -374,7 +376,7 @@ class C8(Room):
 	"""Room C8"""
 	def __init__(self):
 		super(C8, self).__init__("Another Room", "C8", "Another room of the valley.", 
-				None, "D8", None, None, "C7")
+				["SpikeMaul"], "D8", None, None, "C7")
 				
 	def enter(self):
 		"""Enter the Room."""
@@ -388,7 +390,7 @@ class D8(Room):
 	"""Room D8"""
 	def __init__(self):
 		super(D8, self).__init__("Another Room", "D8", "Another room of the valley.", 
-				None, None, "C8", None, None)
+				["BundleOfDynamite"], None, "C8", None, None)
 				
 	def enter(self):
 		"""Enter the Room."""

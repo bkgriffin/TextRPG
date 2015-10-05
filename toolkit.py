@@ -4,7 +4,7 @@
 #
 # Valley of Ithmas
 #
-# ~Toolkit modules~
+# ~Toolkit module~
 # 
 __author__     = "Brandon Griffin"
 __copyright__  = "Copyright 2015"
